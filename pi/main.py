@@ -1,6 +1,7 @@
 import cv2
 from helpers.detect_face import detect_face
 from helpers import pass_face_helper
+from helpers import pass_face_helper
 from converters.image_converter import convert_image_to_base64
 from helpers import serial_helper
 
@@ -17,7 +18,8 @@ while(True):
     if is_detected:
         face_not_detected_count = 0
         fc_base64 = convert_image_to_base64(img=face_crop)
-        pass_face_helper.send_passface_request(fc_base64)
+        person_name = pass_face_helper.get_person(fc_base64)
+        serial_helper.send_data_to_arduino(person_name)
     else:
         serial_helper.send_data_to_arduino('none') #Specifically lower-case none because gods said so
         ++face_not_detected_count
