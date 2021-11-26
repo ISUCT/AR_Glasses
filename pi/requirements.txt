@@ -1,1 +1,3 @@
 picamera
+python-dotenv
+opencv-python
