@@ -27,6 +27,3 @@ if config.ENVIRONMENT_STATE == 'DEBUG':
 else:
     capture_image_pi()
     img_enc = image_converter.convert_image_to_base64(path='./picture.jpg')
-
-
-print(img_enc) #for debug
