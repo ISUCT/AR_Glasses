@@ -1,3 +1,4 @@
 picamera
 python-dotenv
 opencv-python
+requests
