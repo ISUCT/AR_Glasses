@@ -10,7 +10,7 @@ def detect_face(frame):
     try:
         if len(faces) > 0:
             for (x, y, w, h) in faces:
-                frame = frame[y:y+h, x:x+w]
+                frame = frame[y-50:y+h+50, x-50:x+w+50]
                 frame = cv2.resize(frame,(200,200))
             return True, frame
     except:
