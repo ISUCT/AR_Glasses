@@ -13,8 +13,8 @@ def send_data_to_arduino(text_data):
         if serial_comm.isOpen():
             sleep(2)
             serial_comm.write(bytearray(text_data, 'utf-8'))
+            print('Writing {}'.format(text_data))
             serial_comm.flush()
-            serial_comm.close()
     except SerialException as ex:
         print(ex)
 
