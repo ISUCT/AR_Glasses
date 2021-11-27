@@ -15,6 +15,7 @@ face_not_detected_threshold = 100
 while(True):
     ret, frame = camera.read()
     is_detected, face_crop = detect_face(frame)
+    print(face_not_detected_count)
     if is_detected:
         face_not_detected_count = 0
         fc_base64 = convert_image_to_base64(img=face_crop)
@@ -22,7 +23,7 @@ while(True):
         serial_helper.send_data_to_arduino(person_name)
     else:
         serial_helper.send_data_to_arduino('none') #Specifically lower-case none because gods said so
-        ++face_not_detected_count
+        face_not_detected_count += 1
         if face_not_detected_count >= face_not_detected_threshold:
             serial_helper.send_data_to_arduino('Undetected')
             face_not_detected_count = 0
